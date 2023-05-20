@@ -4,31 +4,31 @@ import Modal from 'react-bootstrap/Modal';
 import Table from 'react-bootstrap/Table';
 import {FaShoppingCart} from 'react-icons/fa'
 
-export const Cart = () => {
-  const [show, setShow] = useState(false);
+export const CartPage = () => {
+  
+  const [show, setShow] = useState(true);
 
   const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  // const handleShow = () => setShow(true);
 
   return (
     <>
-      <h1>selamat datang</h1>
-      <h1>selamat datang</h1>
-      <Button variant="primary" onClick={handleShow}>
+      
+      {/* <Button variant="primary" onClick={handleShow}>
         Show My Cart
-      </Button>
+      </Button> */}
 
       <Modal
         show={show}
         onHide={handleClose}
         backdrop="static"
         keyboard={false}
+        className='mt-5'
       >
         <Modal.Header closeButton>
           <Modal.Title><FaShoppingCart/>Modal title</Modal.Title>
         </Modal.Header>
-        <Modal.Body>
-          
+        <Modal.Body>         
         <Table striped bordered hover>
       <thead>
         <tr>
@@ -57,15 +57,13 @@ export const Cart = () => {
           <td>@twitter</td>
         </tr>
       </tbody>
-    </Table>
-
-
+        </Table>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary">Understood</Button>
+          {/* <Button variant="primary">Understood</Button> */}
         </Modal.Footer>
       </Modal>
     </>

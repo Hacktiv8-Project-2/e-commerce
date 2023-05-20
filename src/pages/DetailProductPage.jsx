@@ -1,6 +1,6 @@
 import { Card, Row, Col ,Button,Dropdown,Breadcrumb} from 'react-bootstrap';
 
-export const DetailProduct=()=> {
+export const DetailProductPage =()=> {
    return (
 
  
@@ -48,7 +48,7 @@ export const DetailProduct=()=> {
                </Card.Text>
 
               {/* button */}
-              <Button variant="danger">Danger</Button>
+              <Button variant="danger" className='roundedCircle'>Add To Cart</Button>
               {/*  */}
 
 
