@@ -45,7 +45,7 @@ const cartSlice = createSlice({
         });
     },
 
-    clearCart: (state, action) => (state.cart = []),
+    clearCart: (state) => (state.cart = []),
     setCheckout: (state, action) => {
       state.checkout = action.payload;
     },

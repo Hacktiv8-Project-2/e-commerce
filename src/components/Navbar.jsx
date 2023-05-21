@@ -22,10 +22,11 @@ export const NavBar = () => {
         <div className='d-flex justify-content-between p-1'>
           <Nav className='col-lg-6' variant="pills" defaultActiveKey='/' activeKey={activeKey}>
             <NavItem title='Home' path='/' />
-            <NavItem title='Cart' path='/cart' />
+            <NavItem title='Cart' path='/cart'/>
           </Nav>
         </div>
       </Container>
+
 
       <Offcanvas show={show} onHide={handleClose} className="bg-dark">
         <Offcanvas.Header closeButton closeVariant='white'>

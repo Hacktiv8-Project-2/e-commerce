@@ -1,22 +1,29 @@
 import { useState } from 'react';
-import Button from 'react-bootstrap/Button';
-import Modal from 'react-bootstrap/Modal';
-import Table from 'react-bootstrap/Table';
+import {Button,Modal,Table} from 'react-bootstrap';
 import {FaShoppingCart} from 'react-icons/fa'
+import { useNavigate } from 'react-router-dom';
 
-export const CartPage = () => {
+export const CartPage = ({isOpen}) => {
+
   
-  const [show, setShow] = useState(true);
-
-  const handleClose = () => setShow(false);
+  
+  const [show, setShow] = useState(true || isOpen);
+  const navigate = useNavigate()
+  
+  const handleClose = () =>{
+    setShow(false);
+    navigate(-1)
+  }
   // const handleShow = () => setShow(true);
 
   return (
     <>
       
-      {/* <Button variant="primary" onClick={handleShow}>
+      {/* <Link to='cart'>
+      <Button variant="primary" onClick={handleShow}>
         Show My Cart
-      </Button> */}
+      </Button>
+      </Link> */}
 
       <Modal
         show={show}
@@ -25,36 +32,33 @@ export const CartPage = () => {
         keyboard={false}
         className='mt-5'
       >
+
         <Modal.Header closeButton>
-          <Modal.Title><FaShoppingCart/>Modal title</Modal.Title>
+          <Modal.Title><FaShoppingCart/> My Cart</Modal.Title>
         </Modal.Header>
         <Modal.Body>         
-        <Table striped bordered hover>
-      <thead>
+        <Table bordered hover>
+        <thead>
         <tr>
-          <th>#</th>
-          <th>First Name</th>
-          <th>Last Name</th>
-          <th>Username</th>
+          <th></th>
+          <th></th>
+          <th>Price</th>
+          <th>Quantity</th>
+          <th>Total</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td>1</td>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
+          <td >1</td>
+         
         </tr>
         <tr>
           <td>2</td>
-          <td>Jacob</td>
-          <td>Thornton</td>
-          <td>@fat</td>
+          
         </tr>
         <tr>
           <td>3</td>
-          <td colSpan={2}>Larry the Bird</td>
-          <td>@twitter</td>
+         
         </tr>
       </tbody>
         </Table>
