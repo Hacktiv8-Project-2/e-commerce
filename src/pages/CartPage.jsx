@@ -14,17 +14,9 @@ export const CartPage = ({isOpen}) => {
     setShow(false);
     navigate(-1)
   }
-  // const handleShow = () => setShow(true);
 
   return (
     <>
-      
-      {/* <Link to='cart'>
-      <Button variant="primary" onClick={handleShow}>
-        Show My Cart
-      </Button>
-      </Link> */}
-
       <Modal
         show={show}
         onHide={handleClose}
@@ -40,7 +32,7 @@ export const CartPage = ({isOpen}) => {
         <Table bordered hover>
         <thead>
         <tr>
-          <th></th>
+          
           <th></th>
           <th>Price</th>
           <th>Quantity</th>
@@ -61,13 +53,15 @@ export const CartPage = ({isOpen}) => {
          
         </tr>
       </tbody>
+
         </Table>
+
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          {/* <Button variant="primary">Understood</Button> */}
+
         </Modal.Footer>
       </Modal>
     </>
