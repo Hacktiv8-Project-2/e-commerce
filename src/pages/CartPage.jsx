@@ -1,11 +1,12 @@
 import { useState } from 'react';
 import {Button,Modal,Table} from 'react-bootstrap';
 import {FaShoppingCart} from 'react-icons/fa'
+import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 export const CartPage = ({isOpen}) => {
 
-  
+  const cartItems = useSelector((store)=>store.cartItems)
   
   const [show, setShow] = useState(true || isOpen);
   const navigate = useNavigate()
@@ -60,6 +61,9 @@ export const CartPage = ({isOpen}) => {
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Close
+          </Button>
+          <Button variant="primary" onClick={()=>{}}>
+            Checkout
           </Button>
 
         </Modal.Footer>
