@@ -1,14 +1,25 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { Button, Card } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
+import { scrollToTop } from '../utils/scrollToTop'
 
 export const ProductItem = ({
+  id,
   title,
   price,
   category,
   description,
   image,
 }) => {
+  const handleAddToCart = () => {
+    localStorage.getItem('AUTH_TOKEN')
+      ? console.log('add to cart')
+      : location.assign('/login')
+  }
+
+  useEffect(() => { }, [localStorage.getItem('AUTH_TOKEN')])
+
   return (
     <Card className='p-3'>
       <Card.Img variant="top" src={image} alt={title} height='200px' />
@@ -19,14 +30,17 @@ export const ProductItem = ({
         <Card.Text className='fw-bold fs-4'>${price}</Card.Text>
       </Card.Body>
       <div className='d-flex justify-content-between'>
-        <Button variant='outline-primary'>Detail</Button>
-        <Button variant='primary'>Add to cart</Button>
+        <Link to={`/DetailProduct/${id}`} onClick={scrollToTop}>
+          <Button variant='outline-primary'>Detail</Button>
+        </Link>
+        <Button variant='primary' onClick={handleAddToCart}>Add to cart</Button>
       </div>
     </Card>
   )
 }
 
 ProductItem.propTypes = {
+  id: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
   category: PropTypes.string.isRequired,
