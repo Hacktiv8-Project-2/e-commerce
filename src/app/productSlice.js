@@ -13,6 +13,9 @@ const product = createSlice({
     builder
       .addCase(getData.fulfilled, (state, action) => {
         state.products = action.payload
+        state.products.map((product) => {
+          product.quantity = 20
+        })
       })
       .addCase(getData.rejected, (state, action) => {
         console.log('get data rejected')

@@ -12,7 +12,7 @@ export const NavBar = () => {
   const handleShow = () => setShow(true)
 
   return (
-    <Navbar bg='dark' variant='dark' className='position-fixed start-0 end-0'>
+    <Navbar bg='dark' variant='dark' className='position-fixed start-0 end-0' style={{ zIndex: 999 }}>
       <div className='d-lg-none p-1 ps-3 pe-3 bg-dark d-flex justify-content-between align-items-center' style={{ zIndex: 999 }}>
         <FaBars className='me-3' size='35' fill='#fff' onClick={handleShow} />
         <h1 className='text-white m-0'>E-Commerce</h1>
@@ -20,7 +20,8 @@ export const NavBar = () => {
 
       <Container className="d-none d-lg-block bg-dark" style={{ zIndex: 999 }}>
         <div className='d-flex justify-content-between p-1'>
-          <Nav className='col-lg-6' variant="pills" defaultActiveKey='/' activeKey={activeKey}>
+          <h1 className='text-white m-0'>E-Commerce</h1>
+          <Nav className='' variant="pills" defaultActiveKey='/' activeKey={activeKey}>
             <NavItem title='Home' path='/' />
             <NavItem title='Cart' path='/cart' />
           </Nav>

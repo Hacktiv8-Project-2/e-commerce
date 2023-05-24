@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getData } from '../utils/getData'
+import { ProductItem } from '../components/ProductItem'
+import { Col, Container, Row } from 'react-bootstrap'
 
 export const Home = () => {
   const products = useSelector(state => state.product.products)
@@ -11,16 +13,14 @@ export const Home = () => {
   }, [])
 
   return (
-    <div className='p-2 pt-5'>
-      <h1 className='pt-4'>Welcome to <br /> E-Commerce, Team 7</h1>
-      {
-        products.map(product => (
-          <p key={product.id}>
-            {product.id}.&nbsp;
-            <span>{product.title}</span>
-          </p>
-        ))
-      }
-    </div>
+    <Container className='pt-5 pb-5'>
+      <Row xs={1} md={3} lg={4} className="g-4 mt-4">
+        {products.map(product => (
+          <Col key={product.id}>
+            <ProductItem {...product} />
+          </Col>
+        ))}
+      </Row>
+    </Container>
   )
 }
