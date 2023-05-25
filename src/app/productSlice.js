@@ -5,10 +5,18 @@ const initialState = {
   products: [],
 }
 
-const product = createSlice({
+const productSlice = createSlice({
   name: 'product',
   initialState,
-  reducers: {},
+  reducers: {
+    onHandleUpdateStock: (state, action) => {
+      state.products.map((product) => {
+        if (product.id == action.payload.id) {
+          product.quantity = action.payload.quantity
+        }
+      })
+    },
+  },
   extraReducers(builder) {
     builder
       .addCase(getData.fulfilled, (state, action) => {
@@ -24,4 +32,5 @@ const product = createSlice({
   }
 })
 
-export default product.reducer
+export const { onHandleUpdateStock } = productSlice.actions
+export default productSlice.reducer
