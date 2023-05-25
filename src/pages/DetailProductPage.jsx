@@ -11,15 +11,20 @@ export const DetailProductPage = () => {
    const product = products.find(product => product.id === Number(params.productId))
    const dispatch = useDispatch()
 
-   const [quantity, setQuantity] = useState()
+   const [quantity, setQuantity] = useState(0)
    const [sizeSelected,setSizeSelected] = useState('Select Size')
 
    const x = useRef()
+   // const quantitySelected=Number(x.current.value)
+
+
    const handleQuantityItem = () =>{
-      setQuantity(x.current.value )
+      console.log(x.current.value)
+      setQuantity( Number(x.current.value))
    }
 
    const handleAddToCart=()=>{
+     
       dispatch(addToCart({...product,qty:quantity}))
    }
 
@@ -60,8 +65,11 @@ export const DetailProductPage = () => {
                   </Card.Text>
                   {/*  */}
                   {/* Remain */}
-                  {x.current.value<product.quantity?   <Card.Text>
-                     Remaining : {product.quantity -quantity}
+                  {/* <Card.Text>
+                     Remaining : {product.quantity}
+                  </Card.Text> */}
+                  {quantity<product.quantity?   <Card.Text>
+                     Remaining : {product.quantity - quantity}
                   </Card.Text>:<Card.Text className='text-danger'>*Quantity tidak terpenuhi</Card.Text>}
                
                   {/*  */}
@@ -107,3 +115,4 @@ export const DetailProductPage = () => {
       </Container>
    )
 }
+// d
