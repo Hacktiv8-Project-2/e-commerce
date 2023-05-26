@@ -1,10 +1,16 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { ProductItem } from '../components/ProductItem'
 import { Col, Container, Row } from 'react-bootstrap'
+import { getData } from '../utils/getData'
 
 export const Home = () => {
   const products = useSelector(state => state.product.products)
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(getData())
+  }, []);
 
   return (
     <Container className='pt-5 pb-5'>
