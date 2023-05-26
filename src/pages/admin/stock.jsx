@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Button, Container, Table } from 'react-bootstrap'
-import { getData } from '../../utils/getData'
 import { onHandleUpdateStock } from '../../app/productSlice'
 
 const Products = () => {
@@ -25,10 +24,6 @@ const Products = () => {
       document.querySelectorAll('#stock').forEach(el => el.value = '')
     }
   }
-
-  useEffect(() => {
-    dispatch(getData('/products'))
-  }, [])
 
   return (
     <Container className='pt-5 pb-5'>
