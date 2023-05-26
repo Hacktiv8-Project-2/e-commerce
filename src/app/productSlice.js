@@ -16,6 +16,13 @@ const productSlice = createSlice({
         }
       })
     },
+    onHandleCheckoutStock: (state, action) => {
+      state.products.map((product) => {
+        if (product.id == action.payload.id) {
+          product.quantity -= action.payload.quantity
+        }
+      })
+    }
   },
   extraReducers(builder) {
     builder
@@ -32,5 +39,5 @@ const productSlice = createSlice({
   }
 })
 
-export const { onHandleUpdateStock } = productSlice.actions
+export const { onHandleUpdateStock, onHandleCheckoutStock } = productSlice.actions
 export default productSlice.reducer

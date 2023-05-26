@@ -1,17 +1,10 @@
-import { useEffect } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container, Table } from "react-bootstrap";
-import { useDispatch, useSelector } from "react-redux";
-import { setCheckout } from "../../app/cartSlice";
+import { useSelector } from "react-redux";
 
 const Recap = () => {
-  const { checkout } = useSelector(state => state.cart || { checkout: [] });
-  const dispatch = useDispatch();
-  let total = 0;
-
-  useEffect(() => {
-    dispatch(setCheckout([...checkout]));
-  }, []);
+  const checkout = useSelector(state => state.cart.checkout)
+  let totalPrice = 0
 
   if (checkout.length >= 1) {
     return (
@@ -29,22 +22,23 @@ const Recap = () => {
             </thead>
             <tbody>
               {checkout.map((item) => {
-                const itemTotal = item.sold * item.price;
-                total += itemTotal;
-                return (
-                  <tr key={item.id}>
-                    <td style={{ textAlign: "left" }}>
-                      <h3>{item.title}</h3>
-                      <p className="text-muted">{checkout.category}</p>
-                    </td>
-                    <td>{item.price}</td>
-                    <td>{item.sold}</td>
-                    <td>{(item.sold * item.price)}</td>
-                  </tr>
-                );
+                for (let i = 0; i < item.length; i++) {
+                  totalPrice += item[i].price * item[i].qty
+                  return (
+                    <tr key={item.id}>
+                      <td style={{ textAlign: "left" }}>
+                        <h3>{item[i].title}</h3>
+                        <p className="text-muted">{checkout.category}</p>
+                      </td>
+                      <td>${item[i].price}</td>
+                      <td>{item[i].qty}</td>
+                      <td>${totalPrice}</td>
+                    </tr>
+                  );
+                }
               })}
               <tr>
-                <td>{total}</td>
+                <td className="fs-4 fw-bold">${totalPrice}</td>
               </tr>
             </tbody>
           </Table>
