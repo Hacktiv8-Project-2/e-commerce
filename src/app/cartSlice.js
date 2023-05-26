@@ -52,6 +52,9 @@ const cartSlice = createSlice({
           return item;
         });
     },
+    setCheckout: (state, action) => {
+      state.checkout.push(...action.payload);
+    },
   },
 });
 
