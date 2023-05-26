@@ -1,5 +1,9 @@
 # Team 7 - Final Project 2 - E-Commerce
 
+## Preview
+
+https://fp2-bukapedia-team7.netlify.app/
+
 ## Getting Started
 
 - `npm i`
