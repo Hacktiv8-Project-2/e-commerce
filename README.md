@@ -4,3 +4,15 @@
 
 - `npm i`
 - `npm run dev`
+
+## Credential
+
+### Customer
+
+- Username: **johnd**
+- Password: **m38rmF$**
+
+### Admin
+
+- Username: **admin@bukapedia.com**
+- Password: **admin123**

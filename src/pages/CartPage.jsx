@@ -22,7 +22,9 @@ export const CartPage = () => {
   if(!cartItems.length){
     return (
       <>
-      <h1 className='pt-5 m-auto '>Oh snap! You got an error 404!</h1>
+      <div className="flex justify-center items-center h-full pt-5">
+        <h1 className="font-bold text-center my-52 text-6xl mt-5">Oh snap! You got an error 404!</h1>
+      </div>
       </>
     
     )
