@@ -3,6 +3,8 @@ import PropTypes from 'prop-types'
 import { Button, Card } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { scrollToTop } from '../utils/scrollToTop'
+import { useDispatch, useSelector } from 'react-redux'
+import { addToCart } from '../app/cartSlice'
 
 export const ProductItem = ({
   id,
@@ -12,10 +14,23 @@ export const ProductItem = ({
   description,
   image,
 }) => {
+
+  const dispatch = useDispatch()
+  const products = useSelector(state => state.product.products)
+
   const handleAddToCart = () => {
     localStorage.getItem('AUTH_TOKEN')
-      ? console.log('add to cart')
+      ? console.log('add to cart', id)
       : location.assign('/login')
+
+
+    console.log(products)
+    console.log(products.find(item => item.id === id))
+    dispatch(addToCart(products.find(item => item.id === id)))
+
+    // const x = products.find((item)=>item.id===id)
+    // console.log(x)
+    // dispatch(addToCart(x))
   }
 
   useEffect(() => { }, [localStorage.getItem('AUTH_TOKEN')])
