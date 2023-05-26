@@ -21,11 +21,46 @@ const cartSlice = createSlice({
       }
     },
     removeFromCart: (state, action) => {
-      state.cartItems.filter((item) => item.id !== action.payload);
+      state.cartItems = state.cartItems.filter(
+        (item) => item.id !== action.payload
+      );
+    },
+
+    increaseQuantity: (state, action) => {
+      state.cartItems
+        .filter((item) => item.id === action.payload)
+        .map((item) => {
+          const currentValue = item.qty;
+          if (currentValue === -1) {
+            item.qty = 1;
+          } else {
+            item.qty = currentValue + 1;
+          }
+          return item;
+        });
+    },
+    decreaseQuantity: (state, action) => {
+      state.cartItems
+        .filter((item) => item.id === action.payload)
+        .map((item) => {
+          const currentValue = item.qty;
+          if (currentValue === -1) {
+            item.qty = 1;
+          } else {
+            item.qty = currentValue - 1;
+          }
+          return item;
+        });
     },
   },
 });
 
-export const { addToCart, removeFromCart, setCheckout } = cartSlice.actions;
+export const {
+  addToCart,
+  removeFromCart,
+  setCheckout,
+  decreaseQuantity,
+  increaseQuantity,
+} = cartSlice.actions;
 
 export default cartSlice.reducer;

@@ -4,6 +4,7 @@ import { FaArrowLeft } from 'react-icons/fa'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useParams } from 'react-router-dom'
 import { addToCart } from '../app/cartSlice'
+import { scrollToTop } from '../utils/scrollToTop'
 
 export const DetailProductPage = () => {
    const params = useParams()
@@ -15,11 +16,8 @@ export const DetailProductPage = () => {
    const [sizeSelected,setSizeSelected] = useState('Select Size')
 
    const x = useRef()
-   // const quantitySelected=Number(x.current.value)
-
 
    const handleQuantityItem = () =>{
-      console.log(x.current.value)
       setQuantity( Number(x.current.value))
    }
 
@@ -64,17 +62,15 @@ export const DetailProductPage = () => {
                      ${product.price }
                   </Card.Text>
                   {/*  */}
+
                   {/* Remain */}
-                  {/* <Card.Text>
-                     Remaining : {product.quantity}
-                  </Card.Text> */}
                   {quantity<product.quantity?   <Card.Text>
                      Remaining : {product.quantity - quantity}
                   </Card.Text>:<Card.Text className='text-danger'>*Quantity tidak terpenuhi</Card.Text>}
-               
                   {/*  */}
 
                   <h6 style={{ fontWeight: 'bold' }}>PRODUCT DETAILS</h6>
+
                   {/* item description */}
                   <Card.Text>
                      {product.description }
@@ -105,7 +101,9 @@ export const DetailProductPage = () => {
                      {/*  */}
 
                      {/* button */}
-                     <Button variant="danger" className='roundedCircle' onClick={handleAddToCart}>Add To Cart</Button>
+                     <Link to={`/`} onClick={scrollToTop}>
+                        <Button variant="danger" className='roundedCircle' onClick={handleAddToCart}>Add To Cart</Button>
+                     </Link>
                      {/*  */}
                   </Stack>
 
